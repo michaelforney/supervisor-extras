@@ -67,5 +67,5 @@ info "Running /etc/rc.local"
 setsid /etc/rc.local &
 
 info "Starting service supervisor"
-exec ${SUPERVISOR}
+exec_supervisor
 
