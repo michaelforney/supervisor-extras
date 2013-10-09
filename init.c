@@ -94,6 +94,8 @@ void finish(int signum)
         case SIGUSR2:
             cmd = RB_POWER_OFF;
             break;
+        default:
+            return;
     }
 
     kill(-1, SIGTERM);
