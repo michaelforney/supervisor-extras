@@ -1,0 +1,71 @@
+#!/bin/bash
+
+export PATH="/sbin:/bin"
+source /etc/rc.conf
+
+normal=0
+bold=1
+red=31
+green=32
+
+message() {
+    echo -ne "\e[${1};${2}m>>\e[0m"
+    echo $@
+}
+
+info() {
+    message $normal $green $@
+}
+
+error() {
+    exec < /dev/console &> /dev/console
+    message $bold $red "Command failed"
+    exec /bin/bash -i
+}
+
+nonfatal() {
+    $@ || true
+}
+
+exec < /dev/null
+trap error ERR
+
+info "Mounting /proc"
+mount -n -t proc -o nodev,noexec,nosuid proc /proc
+
+info "Mounting /sys"
+mount -n -t sysfs -o nodev,noexec,nosuid sysfs /sys
+
+info "Mounting /dev/pts"
+mkdir /dev/pts
+mount -n -t devpts -o noexec,nosuid,gid=5,mode=620 devpts /dev/pts
+chown :tty /dev/tty
+
+info "Mounting /tmp"
+mount -t tmpfs tmpfs /tmp
+
+info "Mounting /run"
+mount -t tmpfs -o nodev,nosuid,mode=755 tmpfs /run
+
+info "Checking root filesystem"
+fsck -C -y /
+
+info "Checking other filesystems"
+fsck -C -R -A -y
+
+info "Remounting root in read-write mode"
+mount -o remount,rw /
+
+info "Mounting other filesystems"
+mkdir /dev/shm
+mount -a -t noproc
+
+info "Activating swap"
+swapon -a
+
+info "Running /etc/rc.local"
+setsid /etc/rc.local &
+
+info "Starting service supervisor"
+exec ${SUPERVISOR}
+

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+exec /sbin/agetty --noclear ${PWD##*getty@}
+

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+service=${PWD%/log}
+exec s6-log -t s16777215 !xz /var/log/${service##*/}
+

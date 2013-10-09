@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sysctl -p /etc/sysctl.conf
+hostname $(cat /etc/hostname)
+[[ -n ${KEYMAP} ]] && loadkeys ${KEYMAP}
+
