@@ -31,7 +31,7 @@ install-s6:
 
 install: all $(SUPERVISOR_INSTALL_TARGETS)
 	mkdir -p $(DESTDIR)$(SBINDIR)
-	cp -f init $(DESTDIR)$(SBINDIR)
+	cp -f init reboot poweroff $(DESTDIR)$(SBINDIR)
 	mkdir -p $(DESTDIR)$(PREFIX)$(ETCDIR)
 	cp -f rc rc.local $(DESTDIR)$(ETCDIR)
 
