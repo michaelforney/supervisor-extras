@@ -2,6 +2,7 @@
 
 PREFIX = /usr/local
 SBINDIR = $(PREFIX)/sbin
+DOCDIR = $(PREFIX)/share/doc
 ETCDIR = /etc
 CC = gcc
 
@@ -32,8 +33,10 @@ install-s6:
 install: all $(SUPERVISOR_INSTALL_TARGETS)
 	mkdir -p $(DESTDIR)$(SBINDIR)
 	cp -f init reboot poweroff $(DESTDIR)$(SBINDIR)
-	mkdir -p $(DESTDIR)$(PREFIX)$(ETCDIR)
+	mkdir -p $(DESTDIR)$(ETCDIR)
 	cp -f rc rc.local $(DESTDIR)$(ETCDIR)
+	mkdir -p $(DESTDIR)$(DOCDIR)
+	cp -f rc.conf.sample.perp rc.conf.sample.s6 $(DESTDIR)$(DOCDIR)
 
 .PHONY: all clean install $(SUPERVISOR_INSTALL_TARGETS)
 
