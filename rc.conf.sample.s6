@@ -10,3 +10,5 @@ exec_supervisor() {
     exec s6-svscan -t0 /etc/s6
 }
 
+# vim: set ft=sh
+

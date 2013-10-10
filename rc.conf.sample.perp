@@ -11,3 +11,5 @@ exec_supervisor() {
     exec perpboot /etc/perp
 }
 
+# vim: ft=sh
+
