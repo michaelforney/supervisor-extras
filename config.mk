@@ -4,6 +4,7 @@ PREFIX = /usr/local
 SBINDIR = $(PREFIX)/sbin
 DOCDIR = $(PREFIX)/share/doc
 ETCDIR = /etc
+PERP_BASE = $(ETCDIR)/perp
 
 CC = gcc
 
