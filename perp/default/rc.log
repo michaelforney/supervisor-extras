@@ -2,10 +2,5 @@
 
 [[ ${1} == start ]] || exit
 
-LOG_USER="tinylog"
-LOG_CMD="tinylog -k 8 -s 32000000 -t -z"
-
-TINYLOG_ZIP="xz"
-
 exec runuid ${LOG_USER} ${LOG_CMD} /var/log/${2}
 

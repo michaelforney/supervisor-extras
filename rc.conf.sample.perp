@@ -2,6 +2,11 @@
 
 # KEYMAP="us"
 
+LOG_USER="tinylog"
+LOG_CMD="tinylog -k 8 -s 32000000 -t -z"
+
+TINYLOG_ZIP="xz"
+
 exec_supervisor() {
     exec perpboot /etc/perp
 }
