@@ -2,7 +2,7 @@
 
 include config.mk
 
-SUPERVISOR_INSTALL_TARGETS = $(patsubst %,install-%,$(SUPERVISORS))
+SUPERVISOR_INSTALL_TARGETS = $(SUPERVISORS:%=install-%)
 
 all: init
 
