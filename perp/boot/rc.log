@@ -1,0 +1,4 @@
+#!/bin/bash
+
+exec runuid ${LOG_USER} ${LOG_CMD} /var/log/perpd
+

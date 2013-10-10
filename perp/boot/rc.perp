@@ -1,0 +1,4 @@
+#!/bin/bash
+
+exec runchoom perpd ${PERPD_OPTS} ${PERP_BASE}
+

@@ -19,6 +19,9 @@ clean:
 	rm -f init init.o
 
 install-perp:
+	mkdir -p $(DESTDIR)$(PERP_BASE)/.boot
+	cp -f perp/boot/rc.perp $(DESTDIR)$(PERP_BASE)/.boot/rc.perp
+	cp -f perp/boot/rc.log $(DESTDIR)$(PERP_BASE)/.boot/rc.log
 	mkdir -p $(DESTDIR)$(PERP_BASE)/.default
 	cp -f perp/default/rc.log $(DESTDIR)$(PERP_BASE)/.default
 	mkdir -p $(DESTDIR)$(PERP_BASE)/.getty

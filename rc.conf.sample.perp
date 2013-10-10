@@ -2,9 +2,9 @@
 
 # KEYMAP="us"
 
+PERPD_OPTS="-a 0"
 LOG_USER="tinylog"
 LOG_CMD="tinylog -k 8 -s 32000000 -t -z"
-
 TINYLOG_ZIP="xz"
 
 exec_supervisor() {
