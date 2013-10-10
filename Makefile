@@ -20,8 +20,9 @@ clean:
 
 install-perp:
 	mkdir -p $(DESTDIR)$(ETCDIR)/perp/.default
-	cp -f perp/rc.log $(DESTDIR)$(ETCDIR)/perp/.default
-	cp -f perp/getty-rc.main $(DESTDIR)$(ETCDIR)/perp/.default
+	cp -f perp/default/rc.log $(DESTDIR)$(ETCDIR)/perp/.default
+	mkdir -p $(DESTDIR)$(ETCDIR)/perp/.getty
+	cp -f perp/getty/rc.main $(DESTDIR)$(ETCDIR)/perp/.getty
 
 install-s6:
 	mkdir -p $(DESTDIR)$(ETCDIR)/s6/.default
