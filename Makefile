@@ -1,18 +1,16 @@
 # Makefile
 
-PREFIX = /usr/local
-SBINDIR = $(PREFIX)/sbin
-DOCDIR = $(PREFIX)/share/doc
-ETCDIR = /etc
-CC = gcc
+include config.mk
 
-SUPERVISORS = perp s6
 SUPERVISOR_INSTALL_TARGETS = $(patsubst %,install-%,$(SUPERVISORS))
 
 all: init
 
 init.o: init.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) \
+		-DSTARTUP_COMMAND=\"$(STARTUP_COMMAND)\" \
+		-DRECOVER_COMMAND=\"$(RECOVER_COMMAND)\" \
+		-c -o $@ $<
 
 init: init.o
 	$(CC) $(CFLAGS) -o $@ $<
