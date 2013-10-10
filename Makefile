@@ -26,6 +26,8 @@ install-perp:
 	cp -f perp/default/rc.log $(DESTDIR)$(PERP_BASE)/.default
 	mkdir -p $(DESTDIR)$(PERP_BASE)/.getty
 	cp -f perp/getty/rc.main $(DESTDIR)$(PERP_BASE)/.getty
+	mkdir -p $(DESTDIR)$(PERP_BASE)/getty@tty1
+	ln -s ../.getty/rc.main $(DESTDIR)$(PERP_BASE)/getty@tty1
 
 install-s6:
 	mkdir -p $(DESTDIR)$(ETCDIR)/s6/.default
