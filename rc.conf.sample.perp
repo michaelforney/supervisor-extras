@@ -1,11 +1,11 @@
 # rc.conf
 
-# KEYMAP="us"
-
 PERPD_OPTS="-a 0"
-LOG_USER="tinylog"
-LOG_CMD="tinylog -k 8 -s 32000000 -t -z"
-TINYLOG_ZIP="xz"
+
+# export KEYMAP="us"
+export LOG_USER="tinylog"
+export LOG_CMD="tinylog -k 8 -s 32000000 -t -z"
+export TINYLOG_ZIP="xz"
 
 exec_supervisor() {
     exec perpboot /etc/perp

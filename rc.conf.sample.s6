@@ -1,6 +1,6 @@
 # rc.conf
 
-# KEYMAP="us"
+# export KEYMAP="us"
 
 exec_supervisor() {
     # Opening it in read-write mode ensures that it is non-blocking
