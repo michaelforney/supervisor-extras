@@ -37,10 +37,14 @@ mount -n -t proc -o nodev,noexec,nosuid proc /proc
 info "Mounting /sys"
 mount -n -t sysfs -o nodev,noexec,nosuid sysfs /sys
 
+info "Setting up /dev"
+chown :tty /dev/tty
+ln -s ../proc/self/fd /dev/fd
+ln -s ../proc/kcore /dev/core
+
 info "Mounting /dev/pts"
 mkdir /dev/pts
 mount -n -t devpts -o noexec,nosuid,gid=5,mode=620 devpts /dev/pts
-chown :tty /dev/tty
 
 info "Mounting /tmp"
 mount -t tmpfs tmpfs /tmp
