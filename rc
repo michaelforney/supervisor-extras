@@ -9,7 +9,8 @@ red=31
 green=32
 
 message() {
-    echo -ne "\e[${1};${2}m>>\e[0m"
+    echo -ne "\e[${1};${2}m>>\e[0m "
+    shift 2
     echo $@
 }
 
