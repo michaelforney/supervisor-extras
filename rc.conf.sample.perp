@@ -1,0 +1,8 @@
+# rc.conf
+
+# KEYMAP="us"
+
+exec_supervisor() {
+    exec perpboot /etc/perp
+}
+

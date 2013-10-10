@@ -1,0 +1,12 @@
+# rc.conf
+
+# KEYMAP="us"
+
+exec_supervisor() {
+    # Opening it in read-write mode ensures that it is non-blocking
+    exec 1<> /etc/service/s6-log/fifo 2>&1
+
+    s6-setuidgid nobody mkdir /tmp/uncaught-logs
+    exec s6-svscan -t0 /etc/s6
+}
+
