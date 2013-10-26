@@ -10,6 +10,8 @@ wait_for_socket() {
     done
 }
 
+exec &> /var/log/rc.local.log
+
 if [[ -d /etc/rc.local.d ]] ; then
     for rc in /etc/rc.local.d/* ; do
         [[ -r ${rc} ]] && source ${rc}
