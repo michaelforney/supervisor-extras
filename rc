@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PATH="/sbin:/bin"
+export PATH="/sbin:/bin:/usr/sbin:/usr/bin"
 source /etc/rc.conf
 
 normal=0
