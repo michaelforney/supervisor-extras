@@ -8,6 +8,10 @@ RC_LOCAL_SCRIPTS := \
     keymap.sh       \
     sysctl.sh       \
 
+ifeq ($(ENABLE_UDEV), 1)
+RC_LOCAL_SCRIPTS += udev.sh
+endif
+
 all: init
 
 init.o: init.c

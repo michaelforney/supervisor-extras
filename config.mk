@@ -13,3 +13,5 @@ SUPERVISORS = perp s6
 STARTUP_COMMAND = "/etc/rc"
 RECOVER_COMMAND = "/bin/bash"
 
+ENABLE_UDEV = 1
+
