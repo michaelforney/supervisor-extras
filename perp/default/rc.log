@@ -2,5 +2,12 @@
 
 [[ ${1} == start ]] || exit
 
-exec runuid ${LOG_USER} ${LOG_CMD} /var/log/${2}
+LOG_DIR=/var/log/${2}
+
+if ! [[ -d ${LOG_DIR} ]] ; then
+    mkdir -p ${LOG_DIR}
+    chown ${LOG_USER}:${LOG_USER} ${LOG_DIR}
+fi
+
+exec runuid ${LOG_USER} ${LOG_CMD} ${LOG_DIR}
 
