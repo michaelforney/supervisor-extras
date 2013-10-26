@@ -10,7 +10,9 @@ wait_for_socket() {
     done
 }
 
-sysctl -p /etc/sysctl.conf
-hostname $(cat /etc/hostname)
-[[ -n ${KEYMAP} ]] && loadkeys ${KEYMAP}
+if [[ -d /etc/rc.local.d ]] ; then
+    for rc in /etc/rc.local.d/* ; do
+        [[ -r ${rc} ]] && source ${rc}
+    done
+fi
 

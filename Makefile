@@ -3,6 +3,10 @@
 include config.mk
 
 SUPERVISOR_INSTALL_TARGETS = $(SUPERVISORS:%=install-%)
+RC_LOCAL_SCRIPTS := \
+    hostname.sh     \
+    keymap.sh       \
+    sysctl.sh       \
 
 all: init
 
@@ -39,6 +43,9 @@ install: all $(SUPERVISOR_INSTALL_TARGETS)
 	cp -f init reboot poweroff $(DESTDIR)$(SBINDIR)
 	mkdir -p $(DESTDIR)$(ETCDIR)
 	cp -f rc rc.local $(DESTDIR)$(ETCDIR)
+	mkdir -p $(DESTDIR)$(ETCDIR)/rc.local.d
+	cp -f $(addprefix rc.local.d/,$(RC_LOCAL_SCRIPTS)) \
+	    $(DESTDIR)$(ETCDIR)/rc.local.d
 	mkdir -p $(DESTDIR)$(DOCDIR)
 	cp -f rc.conf.sample.perp rc.conf.sample.s6 $(DESTDIR)$(DOCDIR)
 
