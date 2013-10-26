@@ -1,5 +1,15 @@
 #!/bin/bash
 
+wait_for_socket() {
+    local socket=$(basename "${1}") dir=$(dirname "${1}")
+    [[ -d ${dir} ]] || mkdir "${dir}"
+    while [[ ! -S ${1} ]] ; do
+        inotifywait -q -t 2 -e create --format %f "${dir}"
+
+        [[ ${?} == 1 ]] && sleep 2
+    done
+}
+
 sysctl -p /etc/sysctl.conf
 hostname $(cat /etc/hostname)
 [[ -n ${KEYMAP} ]] && loadkeys ${KEYMAP}
