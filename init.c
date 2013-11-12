@@ -1,4 +1,4 @@
-/* supervisor-utils: init.c
+/* supervisor-extras: init.c
  *
  * Copyright (c) 2013 Michael Forney
  *
