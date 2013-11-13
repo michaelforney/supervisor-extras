@@ -2,7 +2,7 @@
 
 PREFIX = /usr/local
 SBINDIR = $(PREFIX)/sbin
-DOCDIR = $(PREFIX)/share/doc
+DOCDIR = $(PREFIX)/share/doc/supervisor-extras
 ETCDIR = /etc
 PERP_BASE = $(ETCDIR)/perp
 
