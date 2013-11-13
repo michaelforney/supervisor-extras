@@ -41,7 +41,7 @@
 
 #define COLOR_RED       31
 #define COLOR_GREEN     32
-#define WEIGHT_BOLD     1 << 8
+#define WEIGHT_BOLD     (1 << 8)
 
 #define info(fmt, ...) msg(stdout, COLOR_GREEN | WEIGHT_BOLD, fmt, ##__VA_ARGS__)
 
