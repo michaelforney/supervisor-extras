@@ -1,4 +1,11 @@
 #!/bin/bash
 
-exec runuid ${LOG_USER} ${LOG_CMD} /var/log/perpd
+LOG_DIR=/var/log/perpd
+
+if ! [[ -d ${LOG_DIR} ]] ; then
+    mkdir -p ${LOG_DIR}
+    chown ${LOG_USER}:${LOG_USER} ${LOG_DIR}
+fi
+
+exec runuid ${LOG_USER} ${LOG_CMD} ${LOG_DIR}
 
