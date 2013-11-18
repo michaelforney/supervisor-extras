@@ -1,6 +1,6 @@
 # rc.conf
 
-PERPD_OPTS="-a 0"
+export PERPD_OPTS="-a 0"
 
 # export KEYMAP="us"
 export LOG_USER="tinylog"
