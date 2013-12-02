@@ -1,0 +1,17 @@
+#!/bin/bash
+
+[[ ${1} == start ]] || exit
+
+USER=${2#*@}
+export HOME=$(eval echo ~${USER})
+export XDG_RUNTIME_DIR=/run/user/$(id -u ${USER})
+
+umask 022
+
+[[ -x ${HOME}/.services/.start/run ]] || exit
+if [[ ! -d ${XDG_RUNTIME_DIR} ]] ; then
+    mkdir -p -m 755 ${XDG_RUNTIME_DIR}
+    chown ${USER}: ${XDG_RUNTIME_DIR}
+fi
+exec runuid -s ${USER} ${HOME}/.services/.start/run
+
