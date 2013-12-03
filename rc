@@ -11,11 +11,11 @@ green=32
 message() {
     echo -ne "\e[${1};${2}m>>\e[0m "
     shift 2
-    echo $@
+    echo "${@}"
 }
 
 info() {
-    message $normal $green $@
+    message $normal $green "${@}"
 }
 
 error() {
@@ -25,7 +25,7 @@ error() {
 }
 
 nonfatal() {
-    $@ || true
+    "${@}" || true
 }
 
 exec < /dev/null
